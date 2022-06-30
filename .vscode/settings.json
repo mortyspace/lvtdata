@@ -13,6 +13,7 @@
         "**/blocks": true,
         "**/contracts": true,
         "**/transactions": true,
-	    "**/accounts": true
+	    "**/accounts": true,
+        "**/urls": true
     }
 }

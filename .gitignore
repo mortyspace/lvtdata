@@ -3,6 +3,7 @@
 /contracts
 /transactions
 /accounts
+/urls
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
