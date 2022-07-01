@@ -199,6 +199,7 @@ async def main():
     total_loss = 0
     total_avax_loss = 0
     total_merged = 0
+    aggregated = {}
 
     accounts.pop('0xe366fc3f537d1eb9119a49e152d78b5fd005589a')
     accounts.pop('0x024b938af25ed40e515d87366ba4cf95d38a826e')
@@ -237,6 +238,12 @@ async def main():
             total_loss += data['usd_diff'] 
             total_avax_loss += data['diff']
             # print(addr, 'LOSS', round(data['usd_diff'], 3))
+        
+            aggregated[addr] = data
+
+    Path('aggregated.pickle').write_bytes(pickle.dumps(aggregated))
+    for addr, diff in list(sorted(aggregated.items(), key=lambda v: v[1]['usd_diff']))[:10]:
+        print(addr, diff)
 
     print('total profited', total_accounts_profited)
     print('total in loss', total_accounts_loss)
